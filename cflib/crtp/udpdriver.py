@@ -86,9 +86,9 @@ class UdpDriver(CRTPDriver):
             print(f"Socket connection error: {e}")
             self.close()
             raise
-        str1=b'\xFF\x01\x01\x01'
+        #str1=b'\xFF\x01\x01\x01'
         # Add this to the server clients list
-        self.socket.sendto(str1,self.addr)
+        #self.socket.sendto(str1,self.addr)
         #print(str1)
 
     def receive_packet(self, time=0):

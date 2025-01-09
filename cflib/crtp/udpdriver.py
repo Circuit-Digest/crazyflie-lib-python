@@ -67,7 +67,7 @@ class UdpDriver(CRTPDriver):
             self.close()
 
         self.socket = socket(AF_INET, SOCK_DGRAM)
-        self.socket.setblocking(False)
+        #self.socket.setblocking(False)
         self.addr = ('192.168.43.42', 2390)
         try:
             self.socket.bind(('', 2399))  # Dynamic port for local binding

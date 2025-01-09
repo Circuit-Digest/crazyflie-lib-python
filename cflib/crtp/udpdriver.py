@@ -62,33 +62,13 @@ class UdpDriver(CRTPDriver):
             raise WrongUriType('Not an UDP URI')
 
         self.queue = queue.Queue()
-        #self.socket = socket(AF_INET, SOCK_DGRAM)
-        #self.addr = ('192.168.43.42', 2390) #7777 modify @libo
-        #self.socket.bind(('', 2399))
-        #self.socket.connect(self.addr)
-        print("Attempting to connect to:", uri)
-        if hasattr(self, 'socket') and self.socket:
-            print("Socket already exists, closing...")
-            self.close()
-
         self.socket = socket(AF_INET, SOCK_DGRAM)
-        self.socket.setblocking(False)
-        self.addr = ('192.168.43.42', 2390)
-        try:
-            self.socket.bind(('', 0))  # Dynamic port for local binding
-            print(f"Socket bound to: {self.socket.getsockname()}")
-            self.socket.connect(self.addr)
-            print(f"Socket connected to: {self.addr}")
-            str1 = b'\xFF\x01\x01\x01'
-            self.socket.send(str1)
-            print("Connection signal sent.")
-        except OSError as e:
-            print(f"Socket connection error: {e}")
-            self.close()
-            raise
-        #str1=b'\xFF\x01\x01\x01'
+        self.addr = ('192.168.43.42', 2390) #7777 modify @libo
+        self.socket.bind(('', 2399))
+        self.socket.connect(self.addr)
+        str1=b'\xFF\x01\x01\x01'
         # Add this to the server clients list
-        #self.socket.sendto(str1,self.addr)
+        self.socket.send(str1,self.addr)
         #print(str1)
 
     def receive_packet(self, time=0):

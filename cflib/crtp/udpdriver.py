@@ -65,7 +65,7 @@ class UdpDriver(CRTPDriver):
         self.socket = socket(AF_INET, SOCK_DGRAM)
         self.addr = ('192.168.43.42', 2390) #7777 modify @libo
         self.socket.bind(('', 2399))
-        self.socket.connect(self.addr)
+        self.socket.bind(self.addr)
         str1=b'\xFF\x01\x01\x01'
         # Add this to the server clients list
         self.socket.sendto(str1,self.addr)

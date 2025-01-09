@@ -62,15 +62,17 @@ class UdpDriver(CRTPDriver):
             raise WrongUriType('Not an UDP URI')
 
         self.queue = queue.Queue()
-        self.socket = socket(AF_INET, SOCK_DGRAM)
-        print("Connecting to URI:", uri)  # Debug log
+        #self.socket = socket(AF_INET, SOCK_DGRAM)
+        #self.addr = ('192.168.43.42', 2390) #7777 modify @libo
+        #self.socket.bind(('', 2399))
+        #self.socket.connect(self.addr)
         if hasattr(self, 'socket') and self.socket:
-        print("Socket already exists. Closing it first.")
-        self.close()
+            print("Socket already exists. Closing it first.")
+            self.close()
         self.socket = socket(AF_INET, SOCK_DGRAM)
         print("Socket created.")
-        self.addr = ('192.168.43.42', 2390)  # Ensure this matches the expected device
-        self.socket.bind(('', 0))  # Use a dynamic port
+        self.addr = ('192.168.43.42', 2390)
+        self.socket.bind(('', 0))
         self.socket.connect(self.addr)
         print("Socket connected to:", self.addr)
         str1=b'\xFF\x01\x01\x01'

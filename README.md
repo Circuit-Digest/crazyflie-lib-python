@@ -9,6 +9,17 @@ For more info see our [documentation](https://www.bitcraze.io/documentation/repo
 
 ## Installation
 See the [installation instructions](docs/installation/install.md) in the github docs folder.
+## Installation
+
+Clone repository:
+```bash
+git clone https://github.com/Circuit-Digest/crazyflie-lib-python.git
+cd crazyflie-lib-python
+```
+Install the client from source:
+```bash
+pip3 install -e .
+```
 
 ## Official Documentation
 
